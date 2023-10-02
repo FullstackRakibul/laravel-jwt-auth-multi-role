@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -39,21 +40,26 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
-
         $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            //
+            'role' => $request->role,
         ]);
 
-        $token = auth()->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']]);
 
-        return response()->json(['token' => $token]);
+          $token = auth()->attempt(['email' => $request->email, 'password' => $request->password]);
+
+          $context = [
+            "token" => $token,
+            'user' => $user,
+          ];
+
+//        return send_response('registers validate success ',$context);
+
+////        return response()->json(['token' => $token]);
+        return view('auth.registration')->with($token);
     }
 
     /**

@@ -25,7 +25,9 @@ class CheckRole
             return $next($request); // User has the required role, proceed to the route
         }
 
-        return response()->json(['error' => 'Unauthorized'], 403); // User doesn't have the required role, return an unauthorized response
+//        return response()->json(['error' => 'Unauthorized user'], 403); // User doesn't have the required role, return an unauthorized response
+//        return view('auth.login')->with('message','Unauthorized user'); // User doesn't have the required role, return an unauthorized response
+        return send_error('Unauthorized user', 403); // User doesn't have the required role, return an unauthorized response
     }
 
 }

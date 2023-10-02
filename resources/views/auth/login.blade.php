@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <form class="p-4 " action="{{ url('auth') }}" method="post">
+    <form class="p-4 " action="{{ route('auth') }}" method="post">
         {{ csrf_field() }}
         <fieldset class="gap-3">
             <div class="col-auto form-group">

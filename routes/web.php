@@ -23,16 +23,19 @@ use App\Http\Controllers\AuthController;
 //Route::apiResource('/', GuestController::class);
 
 
-Route::get('/', [GuestController::class,'index'])->name('login');
-Route::get('/dashboard', [GuestController::class,'dashboard'])->name('dashboard');
+//Route::get('/', [GuestController::class,'index'])->name('index');
+//Route::get('/dashboard', [GuestController::class,'dashboard'])->name('dashboard');
 
 
 
-Route::get('/login', [GuestController::class,'login'])->name('login');
-Route::get('/registration', [GuestController::class,'registration'])->name('registration');
+//Route::get('/login', [GuestController::class,'login'])->name('login');
+//Route::get('/registration', [GuestController::class,'registration'])->name('registration');
 
 
 //............. guest pages ............
+//
+//Route::post('auth', [AuthController::class,'auth'])->name('auth');
+//Route::post('register', [AuthController::class,'register'])->name('register');
 
-Route::post('auth', [AuthController::class,'auth'])->name('auth');
-Route::post('register', [AuthController::class,'register'])->name('register');
+
+Route::get('/', [GuestController::class,'index'])->name('index');
