@@ -74,7 +74,7 @@
 <header class="container mt-2 ">
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{url('/')}}">JWT auth</a>
+            <a class="navbar-brand" href="{{route('index')}}">JWT auth</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -103,7 +103,7 @@
 <div class="container mx-auto p-5 border border-1 mt-5">
     <div class="container p-2 bg-gradient">
         @if(isset($message))
-            <div class="alert alert-success flex-wrap d-block">
+            <div class="alert alert-success flex-wrap d-block text-break">
                 {{ $message }}
             </div>
         @endif

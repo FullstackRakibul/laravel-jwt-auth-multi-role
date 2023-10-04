@@ -44,9 +44,12 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            //
-            'role' => $request->role,
+            // 'role' => $request->role,
         ]);
+
+        if ($request->has('role')) {
+            $user['role'] = $request->role; // Assign the 'role' if it exists in the request
+        }
 
 
           $token = auth()->attempt(['email' => $request->email, 'password' => $request->password]);

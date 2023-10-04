@@ -44,6 +44,6 @@ Route::get('/registration', [GuestController::class,'registration'])->name('regi
 
 Route::post('auth', [AuthController::class,'auth'])->name('auth');
 Route::post('register', [AuthController::class,'register'])->name('register');
-//Route::get('/', [GuestController::class,'index'])->name('index');
+Route::get('/', [GuestController::class,'index'])->name('index');
 
 
